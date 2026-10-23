@@ -531,7 +531,7 @@ function grade() {
     certs.push(cert); if (certs.length > 20) certs = certs.slice(-20); store.set('certs', certs);
     const txt = certText(cert);
     res.className = 'card banner pass';
-    res.innerHTML = `<div class="big">합격 · ${score}점</div><div>합격선 ${PM}점 · ${N}문제 중 ${correct}문제 정답 · ${cur.round}번째 도전에서 합격 — 선생님께 결과 문자가 갑니다</div>
+    res.innerHTML = `<div class="big">합격 · ${score}점</div><div>합격선 ${PM}점 · ${N}문제 중 ${correct}문제 정답 · ${cur.round}번째 도전에서 합격</div>
       <div class="cert"><b>이 메시지를 선생님께 보내세요</b><textarea rows="7" readonly>${esc(txt)}</textarea><div class="row"><button id="copyCert">메시지 복사</button></div><p class="muted" id="certMsg" style="margin:6px 0 0"></p></div>`;
     $('#copyCert').onclick = async () => { $('#certMsg').textContent = await copyText(txt) ? '복사했습니다. 카톡에 붙여 넣어 선생님께 보내세요.' : '복사가 막혀 있습니다. 위 메시지 칸을 길게 눌러 복사하세요.'; };
     $('#next').textContent = `다음 ${NQ}문제 풀기`; $('#next').onclick = () => { cur.round = 0; newRound(); };
